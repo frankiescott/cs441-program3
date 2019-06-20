@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //initialize default values
         fahrenheit = 32;
         celsius = 0;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         EditText fahrenheit = findViewById(R.id.fahrenheit);
         EditText celsius = findViewById(R.id.celsius);
 
-        //supply default values
+        //apply default values to text fields
         fahrenheit.setText(fahrenheit.toString());
         celsius.setText(celsius.toString());
     }
