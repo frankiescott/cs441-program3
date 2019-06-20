@@ -6,21 +6,27 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    int fahrenheit;
+    int celsius;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fahrenheit = 32;
+        celsius = 0;
 
         //initialize edit text handlers
         EditText fahrenheit = findViewById(R.id.fahrenheit);
         EditText celsius = findViewById(R.id.celsius);
 
         //supply default values
-        fahrenheit.setText("32");
-        celsius.setText("0");
+        fahrenheit.setText(fahrenheit.toString());
+        celsius.setText(celsius.toString());
     }
 
-    public int ftc(int n) {
+    public int ftoc(int n) {
         return (int) (n - 32) * (5/9);
     }
 
