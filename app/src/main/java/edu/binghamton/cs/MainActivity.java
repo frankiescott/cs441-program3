@@ -3,28 +3,46 @@ package edu.binghamton.cs;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    int fahrenheit;
-    int celsius;
+    final Integer f = 32;
+    final Integer c = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize default values
-        fahrenheit = 32;
-        celsius = 0;
-
         //initialize edit text handlers
-        EditText fahrenheit = findViewById(R.id.fahrenheit);
-        EditText celsius = findViewById(R.id.celsius);
+        final EditText fahrenheitText = findViewById(R.id.fahrenheit);
+        final EditText celsiusText = findViewById(R.id.celsius);
 
         //apply default values to text fields
-        fahrenheit.setText(fahrenheit.toString());
-        celsius.setText(celsius.toString());
+        fahrenheitText.setText(f.toString());
+        celsiusText.setText(c.toString());
+
+        SeekBar seekbar = findViewById(R.id.slider);
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Integer prog = progress;
+                celsiusText.setText(prog.toString());
+                Integer far = ctof(progress);
+                fahrenheitText.setText(far.toString());
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     public int ftoc(int n) {
@@ -32,6 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int ctof(int n) {
-        return n * (9/5) + 32;
+        return (int) (n * (9F/5F)) + 32;
     }
 }

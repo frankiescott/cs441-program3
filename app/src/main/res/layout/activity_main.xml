@@ -67,6 +67,10 @@
         </LinearLayout>
 
         <SeekBar
+            android:id="@+id/slider"
+            android:min="0"
+            android:max="100"
+            android:progress="0"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp" />
