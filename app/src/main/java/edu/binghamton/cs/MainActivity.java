@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public int ftoc(int n) {
+        return (int) ((n - 32) * (5F/9F));
+    }
+
     public int ctof(int n) {
         return (int) (n * (9F/5F)) + 32;
     }
