@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                Integer progress = seekBar.getProgress();
+                celsiusText.setText(progress.toString());
             }
         });
 
