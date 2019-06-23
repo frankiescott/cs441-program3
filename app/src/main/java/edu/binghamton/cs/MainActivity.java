@@ -29,12 +29,11 @@ public class MainActivity extends AppCompatActivity {
         fahrenheitText.setText(f.toString());
         celsiusText.setText(c.toString());
 
-        SeekBar seekbar = findViewById(R.id.slider);
+        final SeekBar seekbar = findViewById(R.id.slider);
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Integer prog = progress;
-                celsiusText.setText(prog.toString());
+
             }
 
             @Override
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     Integer val = Integer.parseInt(s.toString());
                     Integer convertedVal = ftoc(val);
                     celsiusText.setText(convertedVal.toString());
+                    seekbar.setProgress(convertedVal);
                 }
                 isChangingFahrenheit = false;
             }
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     Integer val = Integer.parseInt(s.toString());
                     Integer convertedVal = ctof(val);
                     fahrenheitText.setText(convertedVal.toString());
+                    seekbar.setProgress(val);
                 }
                 isChangingCelsius = false;
             }
@@ -97,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void updateTextFields() {
-
-    }
     public Integer ftoc(Integer n) {
         return Math.round(((n - 32) * (5F/9F)));
     }
