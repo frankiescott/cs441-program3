@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Integer prog = progress;
                 celsiusText.setText(prog.toString());
-                //Integer far = ctof(progress);
-                //fahrenheitText.setText(far.toString());
             }
 
             @Override
