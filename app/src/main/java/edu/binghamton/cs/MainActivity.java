@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
     final Integer f = 32;
     final Integer c = 0;
 
+    //we need these otherwise we enter an endless loop that crashes the app because both edit text fields update each other's values
+    boolean isChangingFahrenheit = false;
+    boolean isChangingCelsius = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Integer prog = progress;
                 celsiusText.setText(prog.toString());
-                Integer far = ctof(progress);
-                fahrenheitText.setText(far.toString());
+                //Integer far = ctof(progress);
+                //fahrenheitText.setText(far.toString());
             }
 
             @Override
@@ -54,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                //user updates fahrenheit value so celsius has to be set
+                if (s.length() > 0 && isChangingCelsius == false) {
+                    isChangingFahrenheit = true;
+                    Integer val = Integer.parseInt(s.toString());
+                    Integer convertedVal = ftoc(val);
+                    celsiusText.setText(convertedVal.toString());
+                }
+                isChangingFahrenheit = false;
             }
 
             @Override
@@ -71,7 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                //user updates celsius value so fahrenheit has to be set
+                if (s.length() > 0 && isChangingFahrenheit == false) {
+                    isChangingCelsius = true;
+                    Integer val = Integer.parseInt(s.toString());
+                    Integer convertedVal = ctof(val);
+                    fahrenheitText.setText(convertedVal.toString());
+                }
+                isChangingCelsius = false;
             }
 
             @Override
@@ -81,11 +99,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public int ftoc(int n) {
-        return (int) ((n - 32) * (5F/9F));
+    public void updateTextFields() {
+
+    }
+    public Integer ftoc(Integer n) {
+        return Math.round(((n - 32) * (5F/9F)));
     }
 
-    public int ctof(int n) {
-        return (int) (n * (9F/5F)) + 32;
+    public Integer ctof(Integer n) {
+        return Math.round((n * (9F/5F)) + 32);
     }
 }
