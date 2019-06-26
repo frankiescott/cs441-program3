@@ -9,8 +9,8 @@ import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    final Integer f = 32;
-    final Integer c = 0;
+    Integer f = 32;
+    Integer c = 0;
 
     //we need these otherwise we enter an endless loop that crashes the app because both edit text fields update each other's values
     boolean isChangingFahrenheit = false;
@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Integer progress = seekBar.getProgress();
                 celsiusText.setText(progress.toString());
+
+                //update internal attribute
+                c = progress;
             }
         });
 
@@ -63,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     Integer convertedVal = ftoc(val);
                     celsiusText.setText(convertedVal.toString());
                     seekbar.setProgress(convertedVal);
+
+                    //update internal attribute
+                    c = convertedVal;
                 }
                 isChangingFahrenheit = false;
             }
@@ -88,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
                     Integer convertedVal = ctof(val);
                     fahrenheitText.setText(convertedVal.toString());
                     seekbar.setProgress(val);
+
+                    //update internal attribute
+                    f = convertedVal;
                 }
                 isChangingCelsius = false;
             }
