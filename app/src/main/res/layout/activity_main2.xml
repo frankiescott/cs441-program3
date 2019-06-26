@@ -12,12 +12,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/currenttemp"
             android:paddingTop="20dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:text="The current temperature is"/>
+            android:textSize="25dp"/>
 
         <Button
             android:layout_width="wrap_content"
