@@ -21,7 +21,12 @@ public class Main2Activity extends AppCompatActivity {
         if (extras != null) {
             c = extras.getInt("c");
             TextView currentTemp = findViewById(R.id.currenttemp);
-            currentTemp.setText("The current temperature is " + c + " degrees celsius");
+            if (c < 41) {
+                currentTemp.setText("The current temperature is " + c + " degrees celsius");
+            }
+            else {
+                currentTemp.setText("The current temperature is " + c + " degrees celsius. Stay indoors!!");
+            }
         }
 
         ImageView image = findViewById(R.id.imageView);
@@ -43,6 +48,7 @@ public class Main2Activity extends AppCompatActivity {
         }
         else {
             //way too hot
+            image.setImageResource(R.drawable.fire);
         }
 
         configureBackButton();
