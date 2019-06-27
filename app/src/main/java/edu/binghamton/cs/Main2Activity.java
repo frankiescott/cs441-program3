@@ -18,10 +18,27 @@ public class Main2Activity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            int c = extras.getInt("c");
+            c = extras.getInt("c");
             TextView currentTemp = findViewById(R.id.currenttemp);
             currentTemp.setText("The current temperature is " + c + " degrees celsius");
         }
+
+        if (c >= 0 && c < 10) {
+            //snow
+        }
+        else if (c >= 10 && c < 18) {
+            //fall
+        }
+        else if (c >= 18 && c < 27) {
+            //spring
+        }
+        else if (c >= 27 && c < 41) {
+            //beach
+        }
+        else {
+            //way too hot
+        }
+
 
         configureBackButton();
     }
