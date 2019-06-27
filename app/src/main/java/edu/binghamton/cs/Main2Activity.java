@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Main2Activity extends AppCompatActivity {
@@ -23,17 +24,22 @@ public class Main2Activity extends AppCompatActivity {
             currentTemp.setText("The current temperature is " + c + " degrees celsius");
         }
 
+        ImageView image = findViewById(R.id.imageView);
         if (c >= 0 && c < 10) {
             //snow
+            image.setImageResource(R.drawable.snow);
         }
         else if (c >= 10 && c < 18) {
             //fall
+            image.setImageResource(R.drawable.fall);
         }
         else if (c >= 18 && c < 27) {
             //spring
+            image.setImageResource(R.drawable.spring);
         }
         else if (c >= 27 && c < 41) {
             //beach
+            image.setImageResource(R.drawable.beach);
         }
         else {
             //way too hot
