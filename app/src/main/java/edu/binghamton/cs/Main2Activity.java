@@ -45,7 +45,6 @@ public class Main2Activity extends AppCompatActivity {
             //way too hot
         }
 
-
         configureBackButton();
     }
 
@@ -55,6 +54,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+                intent.putExtra("c", c);
                 startActivity(intent);
             }
         });

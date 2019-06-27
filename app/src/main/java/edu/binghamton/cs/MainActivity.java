@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,15 +25,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize edit text handlers
+        //initialize handlers for widgets
         final EditText fahrenheitText = findViewById(R.id.fahrenheit);
         final EditText celsiusText = findViewById(R.id.celsius);
+        final SeekBar seekbar = findViewById(R.id.slider);
 
-        //apply default values to text fields
+        //used if coming from 2nd activity
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            c = extras.getInt("c");
+            f = ctof(c);
+            seekbar.setProgress(c);
+        }
+
+        //apply values to text fields
         fahrenheitText.setText(f.toString());
         celsiusText.setText(c.toString());
 
-        final SeekBar seekbar = findViewById(R.id.slider);
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
