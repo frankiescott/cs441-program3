@@ -30,7 +30,7 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         ImageView image = findViewById(R.id.imageView);
-        if (c >= 0 && c < 10) {
+        if (c < 10) {
             //snow
             image.setImageResource(R.drawable.snow);
         }
