@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         configureVacationButton();
+        configureResetButton();
     }
 
     public void configureVacationButton() {
@@ -134,6 +135,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void configureResetButton() {
+        Button nextButton = findViewById(R.id.reset);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f = 32;
+                c = 0;
+                final EditText fahrenheitText = findViewById(R.id.fahrenheit);
+                final EditText celsiusText = findViewById(R.id.celsius);
+                fahrenheitText.setText(f.toString());
+                celsiusText.setText(c.toString());
+            }
+        });
+    }
+
 
     public Integer ftoc(Integer n) {
         return Math.round(((n - 32) * (5F/9F)));

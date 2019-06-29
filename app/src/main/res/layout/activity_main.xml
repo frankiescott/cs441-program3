@@ -81,6 +81,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Vacation!"/>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Reset"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
