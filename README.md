@@ -10,11 +10,18 @@ The most difficult problem I ran into while developing this program was implemen
 
 # Development schedule
 June 18th - Created project and initial main activity design
+
 June 20th - Updated layout and coded handlers for the widgets
+
 June 22nd - Adjusted layout and began coding the dynamic information display when updating wigets
+
 June 23rd - Continued developing and debugging until the user interface worked as intended
+
 June 25th - Designed the second activity to display a photo
+
 June 26th - Coded the logic behind switching activities and exchanging information between them
+
 June 27th - Implemented code to change the temperature display and picture depending on the user's input
+
 June 28th - Added a reset button to the main activity and an indicator of when the user lowers or raises the temperature
 
