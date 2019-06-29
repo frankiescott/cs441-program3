@@ -20,15 +20,21 @@ public class MainActivity extends AppCompatActivity {
     boolean isChangingFahrenheit = false;
     boolean isChangingCelsius = false;
 
+    EditText fahrenheitText;
+    EditText celsiusText;
+    SeekBar seekbar;
+    TextView displayMessage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //initialize handlers for widgets
-        final EditText fahrenheitText = findViewById(R.id.fahrenheit);
-        final EditText celsiusText = findViewById(R.id.celsius);
-        final SeekBar seekbar = findViewById(R.id.slider);
+        fahrenheitText = findViewById(R.id.fahrenheit);
+        celsiusText = findViewById(R.id.celsius);
+        seekbar = findViewById(R.id.slider);
+        displayMessage = findViewById(R.id.msg);
 
         //used if coming from 2nd activity
         Bundle extras = getIntent().getExtras();
@@ -79,6 +85,13 @@ public class MainActivity extends AppCompatActivity {
                     celsiusText.setText(convertedVal.toString());
                     seekbar.setProgress(convertedVal);
 
+                    //update display message
+                    if (c > convertedVal) {
+                        displayMessage.setText("You lowered the temperature!");
+                    }
+                    else if (c < convertedVal) {
+                        displayMessage.setText("You raised the temperature!");
+                    }
                     //update internal attribute
                     c = convertedVal;
                 }
@@ -107,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
                     fahrenheitText.setText(convertedVal.toString());
                     seekbar.setProgress(val);
 
+                    //update display message
+                    if (f > convertedVal) {
+                        displayMessage.setText("You lowered the temperature!");
+                    }
+                    else if (f < convertedVal) {
+                        displayMessage.setText("You raised the temperature!");
+                    }
                     //update internal attribute
                     f = convertedVal;
                 }
@@ -143,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 f = 32;
                 c = 0;
-                final EditText fahrenheitText = findViewById(R.id.fahrenheit);
-                final EditText celsiusText = findViewById(R.id.celsius);
                 fahrenheitText.setText(f.toString());
                 celsiusText.setText(c.toString());
             }
